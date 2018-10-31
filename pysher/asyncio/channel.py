@@ -46,7 +46,7 @@ class AsyncChannel:
         while True:
             channel, event, data = await self.q.get()
             for callback in self.callbacks[event]:
-                self.loop.call_soon(callback, data)
+                self.loop.call_soon(callback, data, channel_name=self.name)
 
 
 class PrivateChannel(AsyncChannel):
