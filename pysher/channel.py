@@ -38,4 +38,4 @@ class Channel(object):
     def _handle_event(self, event_name, data):
         if event_name in self.event_callbacks.keys():
             for callback, args, kwargs in self.event_callbacks[event_name]:
-                callback(data, *args, **kwargs)
+                callback(data, *args, channel_name=self.name, **kwargs)
